@@ -1,6 +1,7 @@
 package rca.ac.majuraterm1b.service;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import rca.ac.majuraterm1b.Exceptions.InvalidOperationException;
 import rca.ac.majuraterm1b.Service.ServiceImpl.MathOperatorImpl;
@@ -12,7 +13,7 @@ public class MathOperatorTest {
     @InjectMocks
     MathOperatorImpl mathOperatorImpl;
 
-    @Test(expected = InvalidOperationException.class)
+    @Test
     public void givenTwoNumbers_whenAdded_thenSuccess() throws InvalidOperationException {
         double operand1 = 1;
         double operand2 = 2;
@@ -23,7 +24,7 @@ public class MathOperatorTest {
 
         double actual = mathOperatorImpl.doMath(operand1, operand2, operation);
 
-        assertEquals(result, actual, 0.001);
+        Assertions.assertEquals(result, actual, 0.001);
     }
 
 
