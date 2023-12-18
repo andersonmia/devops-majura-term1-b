@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import rca.ac.majuraterm1b.DTO.DoMathReqDTO;
 import rca.ac.majuraterm1b.Exceptions.InvalidOperationException;
 import rca.ac.majuraterm1b.Service.ServiceImpl.MathOperatorImpl;
+import rca.ac.majuraterm1b.utils.CustomResponse;
 
 @AllArgsConstructor
 @RestController
@@ -16,7 +17,7 @@ import rca.ac.majuraterm1b.Service.ServiceImpl.MathOperatorImpl;
 public class MathController {
     private final MathOperatorImpl mathOperatorImpl;
 
-    public ResponseEntity<?> doMath(@RequestBody DoMathReqDTO doMathReqDTO) throws InvalidOperationException {
-        return ResponseEntity.ok(mathOperatorImpl.doMath(doMathReqDTO.getOperand1(), doMathReqDTO.getOperand2(), doMathReqDTO.getOperation()));
+    public ResponseEntity<CustomResponse> doMath(@RequestBody DoMathReqDTO doMathReqDTO) throws InvalidOperationException {
+        return ResponseEntity.ok(new CustomResponse("success", mathOperatorImpl.doMath(doMathReqDTO.getOperand1(), doMathReqDTO.getOperand2(), doMathReqDTO.getOperation())));
     }
 }
