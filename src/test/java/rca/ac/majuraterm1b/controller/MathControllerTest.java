@@ -13,7 +13,7 @@ public class MathControllerTest {
     RestTemplate restTemplate;
 
     @Test
-    public void doMath_whenValidInput_thenSuccess() {
+    public void givenTwoNumbers_whenValidOperation_thenSuccess() {
         DoMathReqDTO doMathReqDTO = new DoMathReqDTO(1, 2, "+");
         ResponseEntity<CustomResponse> responseEntity = restTemplate.postForEntity("/api/v1/doMath", doMathReqDTO, CustomResponse.class);
         assert responseEntity.getStatusCode().is2xxSuccessful();
